@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: '',
+    name: 'error',
     data() {
       return {
         
@@ -16,5 +16,7 @@
 </script>
 
 <style lang="scss" scoped>
-  
+  .error {
+    color: red;
+  }
 </style>

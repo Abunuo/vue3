@@ -7,5 +7,6 @@ module.exports = [
   'lodash',
   'vue',
   'vue-router',
-  'axios'
+  'axios',
+  'vuex'
 ]

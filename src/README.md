@@ -20,6 +20,7 @@
 #views
 视图
 - foldername
---- components
---- index.vue
---- route.js
+-- components
+--- **.vue
+-- index.vue
+-- route.js

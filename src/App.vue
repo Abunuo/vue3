@@ -5,11 +5,9 @@
 <script>
   export default {
     name: 'App',
-    data() {
-      return {
-        
-      }
-    },
+    setup(props, context) {
+      
+    }
   }
 </script>
 

@@ -1,0 +1,11 @@
+/*
+  共用样式入口
+ */
+// 引入 reset 文件
+@import './reset.scss';
+ 
+// 引入全局样式文件
+@import './main.scss';
+
+// 引入全局变量文件
+// @import './variates.scss';
