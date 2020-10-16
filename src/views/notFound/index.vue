@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'error',
+    name: 'NotFound',
     data() {
       return {
         

@@ -1,6 +1,7 @@
-const main = () => import(/*webpackChunkName: 'main'*/'./index.vue');
+const Main = () => import(/*webpackChunkName: 'main'*/'./index.vue');
 
 export default {
+  name: 'Index',
   path: '/',
-  component: main
+  component: Main
 }
