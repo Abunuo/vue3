@@ -1,6 +1,5 @@
 <template>
   <div class="main-container">
-    <p class="name">{{name}}:</p>
     <p>{{name}}的年龄：{{person.age}}</p>
     <p>{{name}}的性别：{{person.sex}}</p>
     <p v-for="item in students" :key="item" @click="addAge(item)">
@@ -56,7 +55,7 @@
       addAge(item) {
         item.age ++;
       },
-      addStudent() {
+      addStudent(a) {
         const random = Math.random();
         this.students.push({
           name: '小' + ~~(random * 20),

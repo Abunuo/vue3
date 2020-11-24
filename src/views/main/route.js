@@ -1,7 +1,7 @@
 const Main = () => import(/*webpackChunkName: 'main'*/'./index.vue');
 
 export default {
-  name: 'Index',
+  name: 'Main',
   path: '/',
   component: Main
 }

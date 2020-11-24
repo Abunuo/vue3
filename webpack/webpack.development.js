@@ -6,9 +6,6 @@ const webpack = require('webpack')
 const macIp = require('os').networkInterfaces().en0[0].address;
 const { resolvePath } = require('./utils')
 
-// 读取当前运行环境下的全局变量
-const definePlugin = require(resolvePath('.env.development'));
-
 module.exports = {
   mode: 'development',
   output: {
@@ -29,7 +26,6 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new webpack.DefinePlugin(definePlugin),
     new webpack.HotModuleReplacementPlugin()
   ]
 }
