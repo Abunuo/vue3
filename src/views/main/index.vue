@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import vue from 'vue'
+  import emitter from './emitter';
   export default {
     name: 'Index',
     data() {
@@ -37,31 +37,25 @@
       }
     },
     created() {
-      this.$watch('students', (newVal, oldVal) => {
-        console.log('$watch', newVal);
-      }, {
-        deep: true
+      emitter.on('message', (message) => {
+        console.log('message is: ', message);
       })
     },
     watch: {
-      students: {
-        handler(newVal) {
-          console.log('watch', newVal);
-        },
-        deep: true
-      }
+      
     },
     methods: {
       addAge(item) {
         item.age ++;
       },
-      addStudent(a) {
+      addStudent() {
         const random = Math.random();
         this.students.push({
           name: '小' + ~~(random * 20),
           age: 10 + ~~(random * 20),
           sex: ~~(random * 10) % 2 == 0 ? '男' : '女'
-        })
+        });
+        emitter.emit('message',  `小${~~(random * 20)}被添加` )
       }
     }
   }

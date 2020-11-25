@@ -1,4 +1,5 @@
-const Main = () => import(/*webpackChunkName: 'main'*/'./index.vue');
+import { defineAsyncComponent } from 'vue'
+const Main = defineAsyncComponent(() => import(/*webpackChunkName: 'main'*/'./index.vue'));
 
 export default {
   name: 'Main',

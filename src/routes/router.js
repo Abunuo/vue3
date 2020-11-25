@@ -2,7 +2,6 @@
  * 加载各组件的 route.js
  * 
  */
-import Vue from 'vue';
 
 const requireDirective = require.context(
   // 其组件目录的相对路径

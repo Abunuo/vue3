@@ -17,6 +17,7 @@
     "axios": "^0.20.0",
     "babel-loader": "^8.1.0",
     "babel-runtime": "^6.26.0",
+    "mitt": "^2.1.0",
     "vue": "^3.0.0",
     "vue-loader": "^16.0.0-beta.8",
     "vue-router": "^4.0.0-beta.13",
