@@ -5,8 +5,12 @@
 </template>
 
 <script>
+  import Button from '@/components/Button/button.vue'
   export default {
-    name: 'NotFound',
+    name: 'Error',
+    components: [
+      Button
+    ],
     data() {
       return {
         

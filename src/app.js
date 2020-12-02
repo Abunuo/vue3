@@ -6,8 +6,9 @@ import route from './routes/index'
 import store from './store/index'
 import App from './App.vue'
 
+const app = createApp(App);
 
-createApp(App)
+app
   .use(route)
   .use(store)
   .mount('#app');

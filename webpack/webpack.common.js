@@ -95,12 +95,18 @@ module.exports = {
     }),
   ],
   optimization: {
+    runtimeChunk: true,  // 在所有生成 chunk 之间共享的运行时文件
     splitChunks: {
+      minChunks: 2,
       cacheGroups: {
-        commons: {
+        vendor: {  // 提取出来 vendor 里面的公用文件
           name: "vendor",
+          chunks: "initial",
+          priority: 10,
+        },
+        common: {
+          name: 'common',
           chunks: "all",
-          minChunks: 2
         }
       }
     }
