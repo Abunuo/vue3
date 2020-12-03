@@ -11,13 +11,9 @@
 </template>
 
 <script>
-  import Button from '@/components/Button/button.vue'
   import emitter from './emitter';
   export default {
     name: 'Index',
-    components: [
-      Button
-    ],
     data() {
       return {
         name: '小明',

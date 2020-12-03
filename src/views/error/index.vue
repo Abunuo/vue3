@@ -5,12 +5,8 @@
 </template>
 
 <script>
-  import Button from '@/components/Button/button.vue'
   export default {
     name: 'Error',
-    components: [
-      Button
-    ],
     data() {
       return {
         
