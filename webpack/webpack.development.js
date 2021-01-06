@@ -18,6 +18,7 @@ module.exports = {
     host: macIp,
     port: 8000,
     inline: true,
+    compress: true, //  启动 gzip 压缩
     hot: true,
     // open: true,
     proxy: {

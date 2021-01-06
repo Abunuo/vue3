@@ -2,20 +2,29 @@
   <div class="main-container">
     <p>{{name}}的年龄：{{person.age}}</p>
     <p>{{name}}的性别：{{person.sex}}</p>
-    <p v-for="item in students" :key="item" @click="addAge(item)">
-      {{item.name}}的年龄：{{item.age}}
-      {{item.name}}的性别：{{item.sex}}
-    </p>
+    <p-list :students="students" @addAge="addAge"></p-list>
     <button type="button" name="button" @click="addStudent">新增同学</button>
   </div>
 </template>
 
 <script>
+  import { computed } from 'vue';
+  import PList from './components/list.vue';
   import emitter from './emitter';
   export default {
     name: 'Index',
+    inheritAttrs: false,
+    components: {
+      PList
+    },
+    provide() {
+      return {
+        studentsLength: computed(() => this.students.length)
+      }
+    },
     data() {
       return {
+        number: 0,
         name: '小明',
         person: {
           age: 23,
@@ -33,16 +42,13 @@
           name: ' 小红',
           age: 18,
           sex: '女'
-        }]
+        }],
       }
     },
     created() {
       emitter.on('message', (message) => {
         console.log('message is: ', message);
       })
-    },
-    watch: {
-      
     },
     methods: {
       addAge(item) {
@@ -65,8 +71,5 @@
   .main-container {
     padding: 30px;
     font-size: $base-font-size;
-    .name {
-      color: red;
-    }
   }
 </style>

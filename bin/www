@@ -1,0 +1,33 @@
+/**
+ * Module dependencies.
+ *
+ * 利用 node 来创建服务并兼容 vue mode：history
+ *
+ * node bin/www
+ */
+
+var http = require('http');
+var express = require('express');
+var path = require('path');
+
+var compression = require('compression')
+
+var app = express();
+
+// view engine setup
+app.engine('.html', require('ejs').__express)
+app.set('views', path.join(__dirname, '../dist'));
+app.set('view engine', 'html');
+
+app.use(compression()); // 启用代码压缩
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('*', function (req, res) {
+    console.log(req.url);
+    res.append('Content-Encoding', 'gzip');
+    res.render('index')
+})
+
+http.createServer(app).listen(9999, '127.0.0.1', function () {
+    console.log('server is open: http://127.0.0.1:9999');
+});

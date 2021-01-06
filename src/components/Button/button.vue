@@ -1,10 +1,12 @@
 <template>
-  <button>确认</button>
+  <button class="aaa">
+    <slot>确认</slot>
+  </button>
 </template>
 
 <script>
   export default {
-    
+    name: 'ButtonCustom'
   }
 </script>
 
