@@ -24,6 +24,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
+    extensions: [".ts", ".tsx", ".js"],
     alias: {
       '@': resolvePath('src')
     }
@@ -39,6 +40,15 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       use: 'babel-loader'
+    }, {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      }],
     }, {
       // 加载 css 结尾的样式文件及处理 vue模板中的 lang=css 的style
       // 加载 scss/sass 结尾的样式文件及处理 vue模板中的 lang=scss/sass 的style

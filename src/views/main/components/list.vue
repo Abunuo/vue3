@@ -3,7 +3,7 @@
  */
 
 <template>
-  <p style="color: red;">共有数据 {{studentsLength_loc}} 组</p>
+  <p style="color: red;">共有数据 {{studentsLength_log}} 组</p>
   <p v-for="item in students" :key="item.name" @click="emitAddAge(item)" :ref="listRef">
     {{item.name}}的年龄：{{item.age}}
     {{item.name}}的性别：{{item.sex}}
@@ -18,10 +18,9 @@ export default {
   inject: [ 'studentsLength' ],
   data() {
     return {
-      studentsLength_loc: this.studentsLength,
-      arar: [],
-      itemRefs: []
-    }
+			studentsLength_log: this.studentsLength,
+			itemRefs: []
+		}
   },
   beforeUpdate() {
     this.itemRefs = []

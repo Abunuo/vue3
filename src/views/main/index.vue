@@ -7,61 +7,61 @@
   </div>
 </template>
 
-<script>
-  import { computed } from 'vue';
+<script lang="ts">
+  import { computed, ref, reactive, toRefs, provide } from 'vue';
   import PList from './components/list.vue';
   import emitter from './emitter';
+
+  import { Person } from './type'
+
   export default {
     name: 'Index',
     inheritAttrs: false,
     components: {
       PList
     },
-    provide() {
-      return {
-        studentsLength: computed(() => this.students.length)
-      }
-    },
-    data() {
-      return {
-        number: 0,
-        name: '小明',
-        person: {
-          age: 23,
-          sex: '男'
-        },
-        students: [{
-          name: '小李',
-          age: 21,
-          sex: '男'
-        }, {
-          name: '小龙',
-          age: 12,
-          sex: '男'
-        }, {
-          name: ' 小红',
-          age: 18,
-          sex: '女'
-        }],
-      }
-    },
     created() {
       emitter.on('message', (message) => {
         console.log('message is: ', message);
       })
     },
-    methods: {
-      addAge(item) {
+    setup() {
+      const state = reactive({
+        number: 0,
+        name: '小明',
+        person: {
+          name: '大哥',
+          age: 23,
+          sex: '男'
+        } as Person,
+        students: [{
+          name: '小李',
+          age: 21,
+          sex: '男'
+        }] as Person[],
+      });
+      const studentsLength = computed(() => state.students.length)
+
+      provide('studentsLength', studentsLength);
+
+      function addAge(item: Person): void {
         item.age ++;
-      },
-      addStudent() {
+      }
+
+      function addStudent(): void {
         const random = Math.random();
-        this.students.push({
+        state.students.push({
           name: '小' + ~~(random * 20),
           age: 10 + ~~(random * 20),
           sex: ~~(random * 10) % 2 == 0 ? '男' : '女'
         });
         emitter.emit('message',  `小${~~(random * 20)}被添加` )
+      }
+
+      return {
+        ...toRefs(state),
+        addAge,
+        addStudent
       }
     }
   }

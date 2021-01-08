@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "cross-env NODE_ENV=development webpack-dev-server",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
     "build:analyzer": "cross-env NODE_ENV=production ANALYZER=true webpack"
   },
@@ -43,6 +43,7 @@
     "sass-loader": "^10.1.0",
     "sass-resources-loader": "^2.1.1",
     "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.14",
     "typescript": "^4.1.3",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.2",
