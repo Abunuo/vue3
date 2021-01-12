@@ -2,7 +2,7 @@
   "compilerOptions": {
     // 这样就可以对 `this` 上的数据属性进行更严格的推断`
     "strict": true,
-    "module": "ESNext",
+    "module": "esnext",
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
@@ -10,17 +10,23 @@
     "esModuleInterop": true,
     "jsx": "preserve",
     "noLib": false,
-    "target": "es6",
+    "target": "esnext",
     "sourceMap": true,
     "lib": [
-      "ESNext",
-      "DOM"
+      "esnext",
+      "dom"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
-    "./src/**/*.ts"
-, "src/app.js"  ],
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ],
   "exclude": [
     "node_modules",
     "dist",

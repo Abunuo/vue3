@@ -8,13 +8,17 @@
 </template>
 
 <script lang="ts">
-  import { computed, ref, reactive, toRefs, provide } from 'vue';
+  import { defineComponent, computed, ref, reactive, toRefs, provide, ComputedRef } from 'vue';
   import PList from './components/list.vue';
   import emitter from './emitter';
 
-  import { Person } from './type'
+  interface Person {
+    name: string,
+    age: number,
+    sex: string
+  }
 
-  export default {
+  export default defineComponent({
     name: 'Index',
     inheritAttrs: false,
     components: {
@@ -40,7 +44,7 @@
           sex: '男'
         }] as Person[],
       });
-      const studentsLength = computed(() => state.students.length)
+      const studentsLength: ComputedRef<number> = computed(() => state.students.length)
 
       provide('studentsLength', studentsLength);
 
@@ -64,7 +68,7 @@
         addStudent
       }
     }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>
