@@ -26,26 +26,48 @@
 		name: 'PList',
 		props:[ 'students' ],
 		emits: ["addAge"],
+		// 1. 用组合式 api，更方便用 typescript
 		setup(props, context) {
 			const studentsLength_log = inject('studentsLength');
-      let itemRefs: any[] = reactive([]);
-      
-      function emitAddAge(item) {
-        context.emit("addAge", item);
-      }
-      function listRef(el) {
-        itemRefs.push(el);
+		  let itemRefs: HTMLParagraphElement[] = reactive([]);
+			
+		  function emitAddAge(item) {
+		    context.emit("addAge", item);
+		  }
+		  function listRef(el) {
+				console.dir(el);
+		    itemRefs.push(el);
 			};
 
 			onBeforeUpdate(() => {
-        itemRefs = [];
-      });
+		    itemRefs = [];
+		  });
 
 			return {
-        studentsLength_log,
-        emitAddAge,
-        listRef
+		    studentsLength_log,
+		    emitAddAge,
+		    listRef
 			};
 		}
+
+		// 2. 用结合式 api
+		// inject: ['studentsLength'],
+		// data() {
+		// 	return {
+		// 		itemRefs: [] as any[],
+		// 		studentsLength_log: this.studentsLength
+		// 	}
+		// },
+		// beforeUpdate() {
+		// 	this.itemRefs = [];
+		// },
+		// methods: {
+		// 	emitAddAge(item) {
+		// 		this.$emit("addAge", item);
+		// 	},
+		// 	listRef(el) {
+    //     this.itemRefs.push(el);
+		// 	}
+		// },
 	});
 </script>
