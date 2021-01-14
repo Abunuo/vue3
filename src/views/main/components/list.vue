@@ -8,8 +8,7 @@
 		v-for="item in students"
 		:key="item.name"
 		@click="emitAddAge(item)"
-		:ref="listRef"
-	>
+		:ref="listRef">
 		{{ item.name }}的年龄：{{ item.age }} {{ item.name }}的性别：{{ item.sex }}
 	</p>
 </template>
