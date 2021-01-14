@@ -26,6 +26,7 @@
     },
     created() {
       emitter.on('message', (message) => {
+        
         console.log('message is: ', message);
       })
     },
