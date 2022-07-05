@@ -43,7 +43,7 @@
           name: '小李',
           age: 21,
           sex: '男'
-        }] as Person[],
+        }] as Person[]
       });
       const studentsLength: ComputedRef<number> = computed(() => state.students.length)
 
